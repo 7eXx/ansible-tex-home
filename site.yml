@@ -1,0 +1,7 @@
+- name: Deploy infrastracture for synology nas
+  gather_facts: false
+  hosts:
+    - nas
+  roles:
+    - docker-station
+  

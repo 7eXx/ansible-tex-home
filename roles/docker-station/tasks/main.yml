@@ -1,0 +1,6 @@
+- name: Create deploy folder
+  file:
+    path: "{{ portainer_deploy_path }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    mode: 0755
