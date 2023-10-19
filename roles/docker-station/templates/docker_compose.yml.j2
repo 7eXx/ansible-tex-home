@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  portainer:
+    image: portainer/portainer-ee
+    container_name: portainer
+    command: --tlsskipverify --license-key {{ portainer_license_key }}
+    ports:
+      - "9443:9443"
+      - "8000:8000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    restart: unless-stopped
+  registry:
+    image: registry:2
+    container_name: registry
+    environment:
+      - REGISTRY_HTTP_ADDR=0.0.0.0:443
+      - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/{{ portainer_cert_name }}.crt
+      - REGISTRY_HTTP_TLS_KEY=/certs/{{ portainer_cert_name }}.key
+      - REGISTRY_STORAGE_DELETE_ENABLED=true
+    ports:
+      - 5555:443
+    volumes:
+      - registry_data:/var/lib/registry
+      - type: bind
+        source: ./certs
+        target: /certs
+    restart: unless-stopped
+
+volumes:
+  portainer_data:
+  registry_data:
+
+

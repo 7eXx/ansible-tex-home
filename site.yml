@@ -2,6 +2,9 @@
   gather_facts: false
   hosts:
     - nas
+  vars_files:
+    - vars/vars.yml
+    - vars/vault_vars.yml
   roles:
     - docker-station
   
