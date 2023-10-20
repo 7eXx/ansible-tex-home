@@ -27,3 +27,8 @@
   loop:
     - synology-nas.home.crt
     - synology-nas.home.key
+
+- name: Compose deploy
+  command: /usr/local/bin/docker-compose up -d
+  args:
+    chdir: "{{ portainer_deploy_path }}/"

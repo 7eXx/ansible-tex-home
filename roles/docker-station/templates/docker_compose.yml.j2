@@ -2,8 +2,7 @@ version: '3.8'
 
 services:
   portainer:
-    image: portainer/portainer-ee
-    container_name: portainer
+    image: portainer/portainer-ee:{{ portainer_vers }}
     command: --tlsskipverify --license-key {{ portainer_license_key }}
     ports:
       - "9443:9443"
@@ -14,7 +13,6 @@ services:
     restart: unless-stopped
   registry:
     image: registry:2
-    container_name: registry
     environment:
       - REGISTRY_HTTP_ADDR=0.0.0.0:443
       - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/{{ portainer_cert_name }}.crt
