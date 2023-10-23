@@ -1,6 +1,6 @@
 - name: Create deploy folder
   file:
-    path: "{{ portainer_deploy_path }}"
+    path: "{{ docker_station_deploy_path }}"
     state: directory
     owner: "{{ ansible_user }}"
     mode: '0755'
@@ -8,12 +8,12 @@
 - name: Copy docker compose file
   template:
     src:  docker_compose.yml.j2
-    dest: "{{ portainer_deploy_path }}/docker-compose.yml"
+    dest: "{{ docker_station_deploy_path }}/docker-compose.yml"
     mode: '0755'
 
 - name: Create certs folder
   file:
-    path: "{{ portainer_deploy_path }}/certs"
+    path: "{{ docker_station_deploy_path }}/certs"
     state: directory
     owner: "{{ ansible_user }}"
     mode: '0755'
@@ -21,7 +21,7 @@
 - name: Copy cert files
   copy:
     src: "certs/{{ item }}"
-    dest: "{{ portainer_deploy_path }}/certs/{{ item }}"
+    dest: "{{ docker_station_deploy_path }}/certs/{{ item }}"
     owner: "{{ ansible_user }}"
     mode: '0755'
   loop:
@@ -31,4 +31,4 @@
 - name: Compose deploy
   command: /usr/local/bin/docker-compose up -d
   args:
-    chdir: "{{ portainer_deploy_path }}/"
+    chdir: "{{ docker_station_deploy_path }}/"

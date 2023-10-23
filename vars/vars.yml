@@ -1,0 +1,6 @@
+user_id: 1026
+group_id: 101
+
+docker_station_deploy_path: /volume1/docker/docker-station
+
+download_station_deploy_path: /volume1/docker/download-station

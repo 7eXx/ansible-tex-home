@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  plex:
+    image: lscr.io/linuxserver/plex
+    environment:
+      - PUID={{ user_id }}
+      - PGID={{ group_id }}
+      - VERSION=docker
+      - PLEX_CLAIM={{ plex_claim_token }}
+    network_mode: host
+    volumes:
+      - {{ plex_config_path }}:/config
+      - {{ plex_tv_series_path }}:/tv
+      - {{ plex_tv_movies_path }}:/movies
+      - {{ plex_photo_path }}:/photo
+    {% if plex_encoding_enable == 'true' %}
+    devices:
+      - /dev/dri:/dev/dri
+    {% endif %}
+    restart: unless-stopped

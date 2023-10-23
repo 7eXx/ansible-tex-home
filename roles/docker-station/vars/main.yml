@@ -1,3 +1,5 @@
-portainer_deploy_path: /volume1/docker/docker-station
-
 portainer_vers: 2.19.1
+
+portainer_license_key: "{{ vault_portainer_license_key }}"
+
+portainer_cert_name: synology-nas.home

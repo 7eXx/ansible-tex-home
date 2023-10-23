@@ -1,0 +1,9 @@
+
+plex_claim_token: "{{ vault_plex_claim_token }}"
+
+plex_config_path: "{{ download_station_deploy_path }}/plex/config"
+plex_tv_series_path: /volume1/video
+plex_tv_movies_path: /volume1/video
+plex_photo_path: /volume1/photo
+
+plex_encoding_enable: false
