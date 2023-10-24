@@ -18,3 +18,21 @@ services:
     devices:
       - /dev/dri:/dev/dri
 {% endif %}
+
+  transmission:
+    image: linuxserver/transmission
+    restart: unless-stopped
+    environment:
+      - PUID={{ USER_ID }}
+      - PGID={{ GROUP_ID }}
+      - TZ=Europe/Rome
+      - USER={{ TRANSMISSION_USER }} #optional
+      - PASS={{ TRANSMISSION_PASSWORD }} #optional
+    volumes:
+      - {{ TRANSMISSION_CONFIG_PATH }}:/config
+      - {{ TRANSMISSION_DOWNLOADS_PATH }}:/downloads
+      - {{ TRANSMISSION_WATCH_PATH }}:/watch
+    ports:
+      - {{ TRANSMISSION_WEB_PORT }}:9091
+      - {{ TRANSMISSION_TCP_PORT }}:51413
+      - {{ TRANSMISSION_UDP_PORT }}:51413/udp
