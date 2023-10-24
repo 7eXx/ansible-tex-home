@@ -14,7 +14,7 @@ transmission_pass: "{{ vault_transmission_pass }}"
 
 transmission_config_path:  "{{ download_station_deploy_path }}/transmission/config"
 transmission_downloads_path: /volume1/NAS/downloads
-transmission_watch_path: /volume1/NAS/torrents-watch
+transmission_watch_path: /volume1/NAS/downloads/torrents-watch
 
 transmission_web_port: 9091
 transmission_tcp_port: 51413

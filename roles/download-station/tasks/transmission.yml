@@ -1,0 +1,17 @@
+- name: Create transmission configuration folder
+  file:
+    state: directory
+    path: "{{ transmission_config_path }}"
+    mode: '0755'
+
+- name: Check if a configuration already exists
+  stat:
+    path: "{{ transmission_config_path }}/settings.json"
+  register: transmission_config
+
+- name: Copy transmission configuration
+  copy:
+    src: transmission_data_settings.json
+    dest: "{{ transmission_config_path }}/settings.json"
+    mode: '0755'
+  when: not transmission_config.stat.exists
