@@ -23,16 +23,19 @@ services:
     image: linuxserver/transmission
     restart: unless-stopped
     environment:
-      - PUID={{ USER_ID }}
-      - PGID={{ GROUP_ID }}
+      - PUID={{ user_id }}
+      - PGID={{ group_id }}
       - TZ=Europe/Rome
-      - USER={{ TRANSMISSION_USER }} #optional
-      - PASS={{ TRANSMISSION_PASSWORD }} #optional
+      - USER={{ transmission_user }} #optional
+      - PASS={{ transmission_pass }} #optional
+      - WHITELIST= #optional
+      - PEERPORT= #optional
+      - HOST_WHITELIST= #optional
     volumes:
-      - {{ TRANSMISSION_CONFIG_PATH }}:/config
-      - {{ TRANSMISSION_DOWNLOADS_PATH }}:/downloads
-      - {{ TRANSMISSION_WATCH_PATH }}:/watch
+      - {{ transmission_config_path }}:/config
+      - {{ transmission_downloads_path }}:/downloads
+      - {{ transmission_watch_path }}:/watch
     ports:
-      - {{ TRANSMISSION_WEB_PORT }}:9091
-      - {{ TRANSMISSION_TCP_PORT }}:51413
-      - {{ TRANSMISSION_UDP_PORT }}:51413/udp
+      - {{ transmission_web_port }}:9091
+      - {{ transmission_tcp_port }}:51413
+      - {{ transmission_udp_port }}:51413/udp
