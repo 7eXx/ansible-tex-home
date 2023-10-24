@@ -1,0 +1,11 @@
+- name: Create plex folder for configuration
+  file:
+    state: directory
+    path: "{{ plex_config_library_path }}"
+    mode: '0755'
+
+- name: Copy preferences
+  copy:
+    src: plex_config_Preferences.xml
+    dest: "{{ plex_config_library_path }}/Preferences.xml"
+    mode: '0755'

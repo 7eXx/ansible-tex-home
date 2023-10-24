@@ -5,6 +5,9 @@
     owner: "{{ ansible_user }}"
     mode: '0755'
 
+- name: Plex tasks
+  include_tasks: plex.yml
+
 - name: Copy docker compose file
   template:
     src:  docker_compose.yml.j2
