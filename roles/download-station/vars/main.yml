@@ -20,3 +20,8 @@ transmission_web_port: 9091
 transmission_tcp_port: 51413
 transmission_udp_port: 51413
 
+pyload_config_path: "{{ download_station_deploy_path }}/pyload/config"
+pyload_download_path: /volume1/NAS/downloads
+
+pyload_web_port: 8888
+pyload_aux_port: 9666

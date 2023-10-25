@@ -1,0 +1,5 @@
+- name: Create pyload configuration folder
+  file:
+    state: directory
+    path: "{{ pyload_config_path }}"
+    mode: '0755'

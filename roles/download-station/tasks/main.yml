@@ -11,6 +11,9 @@
 - name: Transmission tasks
   include_tasks: transmission.yml
 
+- name: Pyload tasks
+  include_tasks: pyload.yml
+
 - name: Copy docker compose file
   template:
     src:  docker_compose.yml.j2

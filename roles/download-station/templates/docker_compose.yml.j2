@@ -40,3 +40,17 @@ services:
       - {{ transmission_web_port }}:9091
       - {{ transmission_tcp_port }}:51413
       - {{ transmission_udp_port }}:51413/udp
+
+  pyload:
+    image: linuxserver/pyload-ng
+    restart: unless-stopped
+    environment:
+      - PUID={{ user_id }}
+      - PGID={{ group_id }}
+      - TZ=Europe/Rome
+    volumes:
+      - {{ pyload_config_path }}:/config
+      - {{ pyload_download_path }}:/downloads
+    ports:
+      - {{ pyload_web_port }}:8000
+      - {{ pyload_aux_port }}:9666 #optional
