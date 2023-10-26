@@ -14,6 +14,9 @@
 - name: Pyload tasks
   include_tasks: pyload.yml
 
+- name: Amule tasks
+  include_tasks: amule.yml
+
 - name: Copy docker compose file
   template:
     src:  docker_compose.yml.j2

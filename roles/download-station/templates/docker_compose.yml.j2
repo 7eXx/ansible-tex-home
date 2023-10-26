@@ -54,3 +54,25 @@ services:
     ports:
       - {{ pyload_web_port }}:8000
       - {{ pyload_aux_port }}:9666 #optional
+
+
+  amule:
+    image: tchabaud/amule
+    container_name: amule
+    restart: unless-stopped
+    environment:
+      - PUID={{ user_id }}
+      - PGID={{ group_id }}
+      - WEBUI_PWD={{ amule_webui_pass }}
+    volumes:
+      - {{ amule_config_path }}:/home/amule/.aMule
+      - {{ amule_downloads_complete }}:/incoming
+      - {{ amule_downloads_incomplete }}:/temp
+    ports:
+      - {{ amule_web_port }}:4711
+      - {{ amule_tcp_port }}:4662
+      - {{ amule_udp_port }}:4672/udp
+{% if amule_enable == false %}
+    profiles:
+      - donotstart
+{% endif %}

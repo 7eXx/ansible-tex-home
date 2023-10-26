@@ -25,3 +25,15 @@ pyload_download_path: /volume1/NAS/downloads
 
 pyload_web_port: 8888
 pyload_aux_port: 9666
+
+amule_webui_pass: "{{ vault_amule_webui_pass }}"
+
+amule_config_path: "{{ download_station_deploy_path }}/amule/config"
+amule_downloads_complete: "/volume1/NAS/downloads/complete"
+amule_downloads_incomplete: "/volume1/NAS/downloads/incomplete"
+
+amule_web_port: 4711
+amule_tcp_port: 14662
+amule_udp_port: 14672
+
+amule_enable: false
