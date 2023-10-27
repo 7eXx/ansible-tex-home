@@ -2,6 +2,7 @@
   file:
     state: directory
     path: "{{ plex_config_library_path }}"
+    owner: "{{ ansible_user }}"
     mode: '0755'
 
 - name: Check if a configuration already exists
@@ -13,5 +14,6 @@
   copy:
     src: plex_config_Preferences.xml
     dest: "{{ plex_config_library_path }}/Preferences.xml"
+    owner: "{{ ansible_user }}"
     mode: '0755'
   when: not plex_config.stat.exists

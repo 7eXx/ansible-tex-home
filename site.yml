@@ -7,5 +7,5 @@
     - vars/vault_vars.yml
   roles:
     #- docker-station
-    - download-station
-    #- maintenance-station
+    #- download-station
+    - maintenance-station

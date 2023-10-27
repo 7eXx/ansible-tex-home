@@ -2,6 +2,7 @@
   file:
     state: directory
     path: "{{ transmission_config_path }}"
+    owner: "{{ ansible_user }}"
     mode: '0755'
 
 - name: Check if a configuration already exists
@@ -13,5 +14,6 @@
   copy:
     src: transmission_data_settings.json
     dest: "{{ transmission_config_path }}/settings.json"
+    owner: "{{ ansible_user }}"
     mode: '0755'
   when: not transmission_config.stat.exists

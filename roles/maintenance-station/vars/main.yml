@@ -1,0 +1,7 @@
+maintenance_station_deploy_path: /volume1/docker/maintenance-station
+
+file_browser_root_path: /volume1
+file_browser_db_path: "{{ maintenance_station_deploy_path }}/filebrowser/database"
+file_browser_config_path: "{{ maintenance_station_deploy_path }}/filebrowser/config"
+
+file_browser_port: 18080

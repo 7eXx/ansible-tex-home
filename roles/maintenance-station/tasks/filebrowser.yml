@@ -1,0 +1,27 @@
+- name: Create filebrowser database folder
+  file:
+    state: directory
+    path: "{{ file_browser_db_path }}"
+    owner: "{{ ansible_user }}"
+    mode: '0755'
+
+- name: Copy filebrowser database
+  copy:
+    src: database_filebrowser.db
+    dest: "{{ file_browser_db_path }}/filebrowser.db"
+    owner: "{{ ansible_user }}"
+    mode: '0755'
+
+- name: Create filebrowser configuration folder
+  file:
+    state: directory
+    path: "{{ file_browser_config_path }}"
+    owner: "{{ ansible_user }}"
+    mode: '0755'
+
+- name: Copy filebrowser configuration
+  copy:
+    src: config_settings.json
+    dest: "{{ file_browser_config_path }}/settings.json"
+    owner: "{{ ansible_user }}"
+    mode: '0755'

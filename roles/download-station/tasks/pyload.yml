@@ -2,4 +2,5 @@
   file:
     state: directory
     path: "{{ pyload_config_path }}"
+    owner: "{{ ansible_user }}"
     mode: '0755'
