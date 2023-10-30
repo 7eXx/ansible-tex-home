@@ -1,2 +1,5 @@
+root_user_id: 0
+root_group_id: 0
+
 user_id: 1026
 group_id: 101

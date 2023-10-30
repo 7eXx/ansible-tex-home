@@ -2,10 +2,10 @@ version: "3.8"
 
 services:
   filebrowser:
-    image: filebrowser/filebrowser:s6
+    image: filebrowser/filebrowser:v2.23.0-s6
     environment:
-      - PUID={{ user_id }}
-      - PGID={{ group_id }}
+      - PUID={{ root_user_id }}
+      - PGID={{ root_group_id }}
     volumes:
       - {{ file_browser_root_path }}:/srv
       - {{ file_browser_db_path }}/filebrowser.db:/database/filebrowser.db
