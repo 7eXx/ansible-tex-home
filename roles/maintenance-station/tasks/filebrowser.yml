@@ -5,12 +5,18 @@
     owner: "{{ ansible_user }}"
     mode: '0755'
 
+- name: Check if a database already exists
+  stat:
+    path: "{{ file_browser_db_path }}/filebrowser.db"
+  register: file_browser_db
+
 - name: Copy filebrowser database
   copy:
     src: database_filebrowser.db
     dest: "{{ file_browser_db_path }}/filebrowser.db"
     owner: "{{ ansible_user }}"
     mode: '0755'
+  when: not file_browser_db.stat.exists
 
 - name: Create filebrowser configuration folder
   file:
@@ -19,9 +25,15 @@
     owner: "{{ ansible_user }}"
     mode: '0755'
 
+- name: Check if a configuration already exists
+  stat:
+    path: "{{ file_browser_config_path }}/settings.json"
+  register: file_browser_config
+
 - name: Copy filebrowser configuration
   copy:
     src: config_settings.json
     dest: "{{ file_browser_config_path }}/settings.json"
     owner: "{{ ansible_user }}"
     mode: '0755'
+  when: not file_browser_config.stat.exists

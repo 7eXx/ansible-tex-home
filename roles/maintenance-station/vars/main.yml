@@ -5,3 +5,8 @@ file_browser_db_path: "{{ maintenance_station_deploy_path }}/filebrowser/databas
 file_browser_config_path: "{{ maintenance_station_deploy_path }}/filebrowser/config"
 
 file_browser_port: 18080
+
+heimdall_config_path: "{{ maintenance_station_deploy_path }}/heimdall/config"
+
+heimdall_http_port: 8080
+heimdall_https_port: 8443

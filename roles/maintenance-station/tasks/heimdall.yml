@@ -1,0 +1,6 @@
+- name: Create heimdall config folder
+  file:
+    path: "{{ heimdall_config_path }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    mode: '0755'

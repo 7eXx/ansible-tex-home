@@ -57,7 +57,6 @@ services:
 
   amule:
     image: tchabaud/amule
-    container_name: amule
     restart: unless-stopped
     environment:
       - PUID={{ user_id }}

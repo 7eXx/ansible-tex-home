@@ -3,6 +3,7 @@ version: "3.8"
 services:
   filebrowser:
     image: filebrowser/filebrowser:v2.23.0-s6
+    restart: unless-stopped
     environment:
       - PUID={{ root_user_id }}
       - PGID={{ root_group_id }}
@@ -12,3 +13,16 @@ services:
       - {{ file_browser_config_path }}/settings.json:/config/settings.json
     ports:
       - {{ file_browser_port }}:80
+
+  heimdall:
+    image: linuxserver/heimdall
+    restart: unless-stopped
+    environment:
+      - PUID={{ user_id }}
+      - PGID={{ group_id }}
+      - TZ=Europe/Rome
+    volumes:
+      - {{ heimdall_config_path }}:/config
+    ports:
+      - {{ heimdall_http_port }}:80
+      - {{ heimdall_https_port }}:8443
