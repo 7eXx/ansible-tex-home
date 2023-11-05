@@ -1,0 +1,29 @@
+- name: Create deploy folder
+  file: 
+    path: "{{ download_station_deploy_path }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    mode: '0755'
+
+- name: Plex tasks
+  include_tasks: plex.yml
+
+- name: Transmission tasks
+  include_tasks: transmission.yml
+
+- name: Pyload tasks
+  include_tasks: pyload.yml
+
+- name: Amule tasks
+  include_tasks: amule.yml
+
+- name: Copy docker compose file
+  template:
+    src:  docker_compose.yml.j2
+    dest: "{{ download_station_deploy_path }}/docker-compose.yml"
+    mode: '0755'
+
+- name: Compose deploy
+  command: /usr/local/bin/docker-compose up -d
+  args:
+    chdir: "{{ download_station_deploy_path }}/"

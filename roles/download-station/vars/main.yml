@@ -1,0 +1,40 @@
+download_station_deploy_path: /volume1/docker/download-station
+
+plex_claim_token: "{{ vault_plex_claim_token }}"
+
+plex_config_path: "{{ download_station_deploy_path }}/plex/config"
+plex_config_library_path: "{{ plex_config_path }}/Library/Application Support/Plex Media Server"
+plex_tv_series_path: /volume1/video
+plex_tv_movies_path: /volume1/video
+plex_photo_path: /volume1/photo
+
+plex_encoding_enable: true
+
+transmission_user: "{{ vault_transmission_user }}"
+transmission_pass: "{{ vault_transmission_pass }}"
+
+transmission_config_path:  "{{ download_station_deploy_path }}/transmission/config"
+transmission_downloads_path: /volume1/NAS/downloads
+transmission_watch_path: /volume1/NAS/downloads/torrents-watch
+
+transmission_web_port: 9091
+transmission_tcp_port: 51413
+transmission_udp_port: 51413
+
+pyload_config_path: "{{ download_station_deploy_path }}/pyload/config"
+pyload_download_path: /volume1/NAS/downloads
+
+pyload_web_port: 8888
+pyload_aux_port: 9666
+
+amule_webui_pass: "{{ vault_amule_webui_pass }}"
+
+amule_config_path: "{{ download_station_deploy_path }}/amule/config"
+amule_downloads_complete: "/volume1/NAS/downloads/complete"
+amule_downloads_incomplete: "/volume1/NAS/downloads/incomplete"
+
+amule_web_port: 4711
+amule_tcp_port: 14662
+amule_udp_port: 14672
+
+amule_enable: false

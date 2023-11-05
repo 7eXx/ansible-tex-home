@@ -1,0 +1,19 @@
+- name: Create plex configuration folder
+  file:
+    state: directory
+    path: "{{ plex_config_library_path }}"
+    owner: "{{ ansible_user }}"
+    mode: '0755'
+
+- name: Check if a configuration already exists
+  stat:
+    path: "{{ plex_config_library_path }}/Preferences.xml"
+  register: plex_config
+
+- name: Copy preferences
+  copy:
+    src: plex_config_Preferences.xml
+    dest: "{{ plex_config_library_path }}/Preferences.xml"
+    owner: "{{ ansible_user }}"
+    mode: '0755'
+  when: not plex_config.stat.exists

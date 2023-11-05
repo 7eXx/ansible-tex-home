@@ -1,0 +1,76 @@
+version: "3.8"
+services:
+  plex:
+    image: linuxserver/plex
+    environment:
+      - PUID={{ user_id }}
+      - PGID={{ group_id }}
+      - VERSION=docker
+      - PLEX_CLAIM={{ plex_claim_token }}
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - {{ plex_config_path }}:/config
+      - {{ plex_tv_series_path }}:/tv
+      - {{ plex_tv_movies_path }}:/movies
+      - {{ plex_photo_path }}:/photo
+{% if plex_encoding_enable == true %}
+    devices:
+      - /dev/dri:/dev/dri
+{% endif %}
+
+  transmission:
+    image: linuxserver/transmission
+    restart: unless-stopped
+    environment:
+      - PUID={{ user_id }}
+      - PGID={{ group_id }}
+      - TZ=Europe/Rome
+      - TRANSMISSION_WEB_HOME= #optional
+      - USER= #optional
+      - PASS= #optional
+      - WHITELIST= #optional
+      - PEERPORT= #optional
+      - HOST_WHITELIST= #optional
+    volumes:
+      - {{ transmission_config_path }}:/config
+      - {{ transmission_downloads_path }}:/downloads
+      - {{ transmission_watch_path }}:/watch
+    ports:
+      - {{ transmission_web_port }}:9091
+      - {{ transmission_tcp_port }}:51413
+      - {{ transmission_udp_port }}:51413/udp
+
+  pyload:
+    image: linuxserver/pyload-ng
+    restart: unless-stopped
+    environment:
+      - PUID={{ user_id }}
+      - PGID={{ group_id }}
+      - TZ=Europe/Rome
+    volumes:
+      - {{ pyload_config_path }}:/config
+      - {{ pyload_download_path }}:/downloads
+    ports:
+      - {{ pyload_web_port }}:8000
+      - {{ pyload_aux_port }}:9666 #optional
+
+  amule:
+    image: tchabaud/amule
+    restart: unless-stopped
+    environment:
+      - PUID={{ user_id }}
+      - PGID={{ group_id }}
+      - WEBUI_PWD={{ amule_webui_pass }}
+    volumes:
+      - {{ amule_config_path }}:/home/amule/.aMule
+      - {{ amule_downloads_complete }}:/incoming
+      - {{ amule_downloads_incomplete }}:/temp
+    ports:
+      - {{ amule_web_port }}:4711
+      - {{ amule_tcp_port }}:4662
+      - {{ amule_udp_port }}:4672/udp
+{% if amule_enable == false %}
+    profiles:
+      - donotstart
+{% endif %}

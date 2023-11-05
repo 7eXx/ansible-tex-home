@@ -1,0 +1,6 @@
+- name: Create amule configuration folder
+  file:
+    path: "{{ amule_config_path }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    mode: '0755'
