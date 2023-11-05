@@ -9,8 +9,8 @@ services:
       - PGID={{ root_group_id }}
     volumes:
       - {{ file_browser_root_path }}:/srv
-      - {{ file_browser_db_path }}/filebrowser.db:/database/filebrowser.db
-      - {{ file_browser_config_path }}/settings.json:/config/settings.json
+      - {{ file_browser_db_path }}:/database
+      - {{ file_browser_config_path }}:/config
     ports:
       - {{ file_browser_port }}:80
 
