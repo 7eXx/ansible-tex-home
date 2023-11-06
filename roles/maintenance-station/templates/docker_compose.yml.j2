@@ -35,5 +35,9 @@ services:
       SEMAPHORE_ADMIN_NAME: admin
       SEMAPHORE_ADMIN_EMAIL: admin@localhost
       SEMAPHORE_ADMIN: admin
+    # TODO: fix permission denied for database
+    volumes:
+      - {{ semaphore_config_path }}:/etc/semaphore
+      - {{ semaphore_database_path }}:/var/lib/semaphore
     ports:
       - {{ semaphore_port }}:3000

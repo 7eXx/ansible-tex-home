@@ -5,11 +5,11 @@
     owner: "{{ ansible_user }}"
     mode: '0755'
 
-# - name: Filebrowser tasks
-#   include_tasks: filebrowser.yml
+- name: Filebrowser tasks
+  include_tasks: filebrowser.yml
 
-# - name: Heimdall tasks
-#   include_tasks: heimdall.yml
+- name: Heimdall tasks
+  include_tasks: heimdall.yml
 
 - name: Semaphore tasks
   include_tasks: semaphore.yml
