@@ -10,3 +10,7 @@ heimdall_config_path: "{{ maintenance_station_deploy_path }}/heimdall/config"
 
 heimdall_http_port: 8080
 heimdall_https_port: 8443
+
+semaphore_config_path: "{{ maintenance_station_deploy_path }}/semaphore/config"
+
+semaphore_port: 3000
