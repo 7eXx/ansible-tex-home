@@ -26,3 +26,18 @@ services:
     ports:
       - {{ heimdall_http_port }}:80
       - {{ heimdall_https_port }}:8443
+
+  semaphore:
+    image: semaphoreui/semaphore:latest
+    environment:
+      - SEMAPHORE_DB_DIALECT=bolt
+      - SEMAPHORE_ADMIN_PASSWORD=changeme
+      - SEMAPHORE_ADMIN_NAME=admin
+      - SEMAPHORE_ADMIN_EMAIL=admin@localhost
+      - SEMAPHORE_ADMIN=admin
+    # TODO: fix permission denied for database
+    volumes:
+      - {{ semaphore_config_path }}:/etc/semaphore
+      - {{ semaphore_database_path }}:/var/lib/semaphore
+    ports:
+      - {{ semaphore_port }}:3000

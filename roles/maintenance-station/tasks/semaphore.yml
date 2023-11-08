@@ -1,0 +1,39 @@
+- name: Create semaphore configuration folder
+  file:
+    path: "{{ semaphore_config_path }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    mode: '0755'
+
+- name: Check if a configuration already exists
+  stat:
+    path: "{{ semaphore_config_path }}/settings.json"
+  register: semaphore_config
+
+- name: Copy semaphore configuration
+  copy:
+    src: semaphore_config.json
+    dest: "{{ semaphore_config_path }}/config.json"
+    owner: "{{ ansible_user }}"
+    mode: '0755'
+  when: not semaphore_config.stat.exists
+
+- name: Create semaphore database folder
+  file:
+    path: "{{ semaphore_database_path }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    mode: '0755'
+
+- name: Check if database file already exists
+  stat:
+    path: "{{ semaphore_database_path }}/database.boltdb"
+  register: semaphore_database
+
+- name: Copy semaphore database
+  copy:
+    src: semaphore_database.boltdb
+    dest: "{{ semaphore_database_path }}/database.boltdb"
+    owner: "{{ ansible_user }}"
+    mode: '0777'
+  when: not semaphore_database.stat.exists
