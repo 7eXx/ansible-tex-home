@@ -35,5 +35,5 @@
     src: semaphore_database.boltdb
     dest: "{{ semaphore_database_path }}/database.boltdb"
     owner: "{{ ansible_user }}"
-    mode: '0755'
+    mode: '0777'
   when: not semaphore_database.stat.exists

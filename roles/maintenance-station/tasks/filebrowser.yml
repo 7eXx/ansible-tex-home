@@ -12,7 +12,7 @@
 
 - name: Copy filebrowser database
   copy:
-    src: database_filebrowser.db
+    src: filebrowser_database.db
     dest: "{{ file_browser_db_path }}/filebrowser.db"
     owner: "{{ ansible_user }}"
     mode: '0755'
@@ -32,7 +32,7 @@
 
 - name: Copy filebrowser configuration
   copy:
-    src: config_settings.json
+    src: filebrowser_config_settings.json
     dest: "{{ file_browser_config_path }}/settings.json"
     owner: "{{ ansible_user }}"
     mode: '0755'

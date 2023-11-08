@@ -30,11 +30,11 @@ services:
   semaphore:
     image: semaphoreui/semaphore:latest
     environment:
-      SEMAPHORE_DB_DIALECT: bolt
-      SEMAPHORE_ADMIN_PASSWORD: changeme
-      SEMAPHORE_ADMIN_NAME: admin
-      SEMAPHORE_ADMIN_EMAIL: admin@localhost
-      SEMAPHORE_ADMIN: admin
+      - SEMAPHORE_DB_DIALECT=bolt
+      - SEMAPHORE_ADMIN_PASSWORD=changeme
+      - SEMAPHORE_ADMIN_NAME=admin
+      - SEMAPHORE_ADMIN_EMAIL=admin@localhost
+      - SEMAPHORE_ADMIN=admin
     # TODO: fix permission denied for database
     volumes:
       - {{ semaphore_config_path }}:/etc/semaphore
