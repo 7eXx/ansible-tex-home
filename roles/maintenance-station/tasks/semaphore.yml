@@ -11,8 +11,8 @@
   register: semaphore_config
 
 - name: Copy semaphore configuration
-  copy:
-    src: semaphore_config.json
+  template:
+    src: semaphore_config.json.j2
     dest: "{{ semaphore_config_path }}/config.json"
     owner: "{{ ansible_user }}"
     mode: '0755'
@@ -23,7 +23,7 @@
     path: "{{ semaphore_database_path }}"
     state: directory
     owner: "{{ ansible_user }}"
-    mode: '0755'
+    mode: '0777'
 
 - name: Check if database file already exists
   stat:

@@ -6,6 +6,9 @@
     - vars/vars.yml
     - vars/vault_vars.yml
   roles:
-    #- docker-station
-    #- download-station
-    - maintenance-station
+    - role: docker-station
+      tags: docker-station
+    - role: download-station
+      tags: download-station
+    - role: maintenance-station
+      tags: maintenance-station
