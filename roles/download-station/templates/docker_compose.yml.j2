@@ -49,8 +49,8 @@ services:
       - PGID={{ group_id }}
       - TZ=Europe/Rome
     volumes:
-      - {{ radarr_condfig_path }}:/config
-      - {{ radarr_movie_path }}:/movies #optional
+      - {{ radarr_config_path }}:/config
+      - {{ radarr_movies_path }}:/movies #optional
       - {{ radarr_downloads_path }}:/downloads #optional
     ports:
       - {{ radarr_port }}:7878
@@ -59,13 +59,13 @@ services:
     image: linuxserver/jackett
     restart: unless-stopped
     environment:
-      - PUID={{ USER_ID }}
-      - PGID={{ GROUP_ID }}
+      - PUID={{ user_id }}
+      - PGID={{ group_id }}
       - TZ=Europe/Rome
       - AUTO_UPDATE=true
       - RUN_OPTS=
     volumes:
-      - {{ jacket_config_path }}:/config
+      - {{ jackett_config_path }}:/config
       - {{ jackett_downloads_path }}:/downloads
     ports:
       - {{ jackett_port }}:9117
