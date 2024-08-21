@@ -22,7 +22,7 @@ transmission_tcp_port: 51413
 transmission_udp_port: 51413
 
 radarr_config_path: "{{ download_station_deploy_path }}/radarr/config/data"
-radarr_movies_path: /volume1/NAS/video
+radarr_movies_path: /volume1/video
 radarr_downloads_path: /volume1/NAS/downloads
 
 radarr_port: 7878
