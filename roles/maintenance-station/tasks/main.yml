@@ -5,11 +5,20 @@
     owner: "{{ ansible_user }}"
     mode: '0755'
 
+- name: Create configuration folder
+  file:
+    state: directory
+    path: "{{ item.path }}"
+    owner: "{{ ansible_user }}"
+    mode: '0755'
+  loop:
+    - { name: "filebrowser", path: "{{ file_browser_db_path }}" }
+    - { name: "heimdall", path: "{{ heimdall_config_path }}" }
+    - { name: "semaphore", path: "{{ semaphore_config_path }}" }
+    - { name: "jenkins", path: "{{ jenkins_config_path }}" }
+
 - name: Filebrowser tasks
   include_tasks: filebrowser.yml
-
-- name: Heimdall tasks
-  include_tasks: heimdall.yml
 
 - name: Semaphore tasks
   include_tasks: semaphore.yml

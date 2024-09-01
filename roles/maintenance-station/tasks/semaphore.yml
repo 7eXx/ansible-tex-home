@@ -1,9 +1,3 @@
-- name: Create semaphore configuration folder
-  file:
-    path: "{{ semaphore_config_path }}"
-    state: directory
-    owner: "{{ ansible_user }}"
-    mode: '0755'
 
 - name: Check if a configuration already exists
   stat:

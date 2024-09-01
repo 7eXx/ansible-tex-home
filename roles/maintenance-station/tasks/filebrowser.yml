@@ -1,9 +1,3 @@
-- name: Create filebrowser database folder
-  file:
-    state: directory
-    path: "{{ file_browser_db_path }}"
-    owner: "{{ ansible_user }}"
-    mode: '0755'
 
 - name: Check if a database already exists
   stat:

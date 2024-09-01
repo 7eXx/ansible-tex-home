@@ -40,3 +40,15 @@ services:
       - {{ semaphore_database_path }}:/var/lib/semaphore
     ports:
       - {{ semaphore_port }}:3000
+
+  jenkins:
+    image: jenkins/jenkins:lts-jdk17
+    environment:
+      - PUID={{ user_id }}
+      - PGID={{ group_id }}
+    restart: unless-stopped
+    volumes:
+      - {{ jenkins_config_path }}:/config
+    ports:
+      - {{ jenkins_port }}:8080
+      - {{ jenkins_agent_port }}:50000

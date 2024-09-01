@@ -4,11 +4,11 @@ file_browser_root_path: /volume1
 file_browser_db_path: "{{ maintenance_station_deploy_path }}/filebrowser/database"
 file_browser_config_path: "{{ maintenance_station_deploy_path }}/filebrowser/config"
 
-file_browser_port: 18080
+file_browser_port: 28080
 
 heimdall_config_path: "{{ maintenance_station_deploy_path }}/heimdall/config"
 
-heimdall_http_port: 8080
+heimdall_http_port: 18080
 heimdall_https_port: 8443
 
 semaphore_config_path: "{{ maintenance_station_deploy_path }}/semaphore/config"
@@ -21,3 +21,8 @@ semaphore_encryption: "{{ vault_semaphore_encryption }}"
 semaphore_access_key_encryption: "{{ vault_semaphore_access_key_encryption }}"
 
 semaphore_port: 3000
+
+jenkins_config_path: "{{ maintenance_station_deploy_path }}/jenkins/config"
+
+jenkins_port: 8080
+jenkins_agent_port: 50000
