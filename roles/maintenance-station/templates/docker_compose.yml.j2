@@ -13,6 +13,10 @@ services:
       - {{ file_browser_config_path }}:/config
     ports:
       - {{ file_browser_port }}:80
+{% if amule_enable == false %}
+    profiles:
+      - donotstart
+{% endif %}
 
   heimdall:
     image: linuxserver/heimdall
@@ -43,12 +47,13 @@ services:
 
   jenkins:
     image: jenkins/jenkins:lts-jdk17
+    user: "${UID}:${GID}"
     environment:
       - PUID={{ user_id }}
       - PGID={{ group_id }}
     restart: unless-stopped
     volumes:
-      - {{ jenkins_config_path }}:/config
+      - {{ jenkins_config_path }}:/var/jenkins_home
     ports:
       - {{ jenkins_port }}:8080
       - {{ jenkins_agent_port }}:50000

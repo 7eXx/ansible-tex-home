@@ -6,6 +6,8 @@ file_browser_config_path: "{{ maintenance_station_deploy_path }}/filebrowser/con
 
 file_browser_port: 28080
 
+file_browser_enable: false
+
 heimdall_config_path: "{{ maintenance_station_deploy_path }}/heimdall/config"
 
 heimdall_http_port: 18080
