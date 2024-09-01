@@ -1,0 +1,10 @@
+- name: Create configuration folder
+  file:
+    state: directory
+    path: "{{ item.path }}"
+    owner: "{{ ansible_user }}"
+    mode: '0755'
+  loop:
+    - { name: "pyload", path: "{{ pyload_config_path }}" }
+    - { name: "radarr", path: "{{ radarr_config_path }}" }
+    - { name: "jackett", path: "{{ jackett_config_path }}" }

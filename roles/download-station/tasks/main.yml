@@ -11,8 +11,8 @@
 - name: Transmission tasks
   include_tasks: transmission.yml
 
-- name: Pyload tasks
-  include_tasks: pyload.yml
+- name: Create config paths
+  include_tasks: create-config-path.yml
 
 - name: Amule tasks
   include_tasks: amule.yml
