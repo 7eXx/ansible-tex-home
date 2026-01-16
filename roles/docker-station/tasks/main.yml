@@ -25,8 +25,8 @@
     owner: "{{ ansible_user }}"
     mode: '0755'
   loop:
-    - synology-nas.home.crt
-    - synology-nas.home.key
+    - "{{ cert_name }}.crt"
+    - "{{ cert_name }}.key"
 
 - name: Compose deploy
   command: /usr/local/bin/docker-compose up -d
