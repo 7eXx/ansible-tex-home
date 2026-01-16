@@ -11,6 +11,7 @@ services:
       - TRUSTED_ORIGINS={{ portainer_trusted_origins }}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/ssl/certs:/etc/ssl/certs:ro
       - portainer_data:/data
     restart: unless-stopped
   registry:
