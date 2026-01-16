@@ -1,6 +1,6 @@
 docker_station_deploy_path: /volume1/docker/docker-station
 
-portainer_vers: 2.19.1
+portainer_vers: 2.20.1
 
 portainer_license_key: "{{ vault_portainer_license_key }}"
 

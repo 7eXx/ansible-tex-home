@@ -5,17 +5,25 @@
     owner: "{{ ansible_user }}"
     mode: '0755'
 
+- name: Create configuration folder
+  file:
+    state: directory
+    path: "{{ item.path }}"
+    owner: "{{ ansible_user }}"
+    mode: '0755'
+  loop:
+    - { name: "pyload", path: "{{ pyload_config_path }}" }
+    - { name: "radarr", path: "{{ radarr_config_path }}" }
+    - { name: "jackett", path: "{{ jackett_config_path }}" }
+    - { name: "amule", path: "{{ amule_config_path }}" }
+    - { name: "plex", path: "{{ plex_config_library_path }}" }
+    - { name: "transmission", path: "{{ transmission_config_path }}" }
+
 - name: Plex tasks
   include_tasks: plex.yml
 
 - name: Transmission tasks
   include_tasks: transmission.yml
-
-- name: Pyload tasks
-  include_tasks: pyload.yml
-
-- name: Amule tasks
-  include_tasks: amule.yml
 
 - name: Copy docker compose file
   template:

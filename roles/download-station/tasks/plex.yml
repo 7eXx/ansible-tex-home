@@ -1,9 +1,3 @@
-- name: Create plex configuration folder
-  file:
-    state: directory
-    path: "{{ plex_config_library_path }}"
-    owner: "{{ ansible_user }}"
-    mode: '0755'
 
 - name: Check if a configuration already exists
   stat:

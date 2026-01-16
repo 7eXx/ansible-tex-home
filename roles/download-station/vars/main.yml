@@ -21,6 +21,17 @@ transmission_web_port: 9091
 transmission_tcp_port: 51413
 transmission_udp_port: 51413
 
+radarr_config_path: "{{ download_station_deploy_path }}/radarr/config/data"
+radarr_movies_path: /volume1/video
+radarr_downloads_path: /volume1/NAS/downloads
+
+radarr_port: 7878
+
+jackett_config_path: "{{ download_station_deploy_path }}/jackett/config"
+jackett_downloads_path: /volume1/NAS/downloads
+
+jackett_port: 9117
+
 pyload_config_path: "{{ download_station_deploy_path }}/pyload/config"
 pyload_download_path: /volume1/NAS/downloads
 
