@@ -1,8 +1,10 @@
 docker_station_deploy_path: /volume1/docker/docker-station
 
-portainer_vers: 2.20.1
+portainer_vers: 2.33.6
+registry_vers: 3
 
 portainer_license_key: "{{ vault_portainer_license_key }}"
+portainer_trusted_origins: portainer.texhome.lan
 
 cert_name: registry
 
