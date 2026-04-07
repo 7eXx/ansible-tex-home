@@ -13,7 +13,7 @@ services:
       - {{ file_browser_config_path }}:/config
     ports:
       - {{ file_browser_port }}:80
-{% if amule_enable == false %}
+{% if file_browser_enable == false %}
     profiles:
       - donotstart
 {% endif %}
@@ -33,6 +33,7 @@ services:
 
   semaphore:
     image: semaphoreui/semaphore:latest
+    restart: unless-stopped
     environment:
       - SEMAPHORE_DB_DIALECT=bolt
       - SEMAPHORE_ADMIN_PASSWORD={{ semaphore_admin_password }}
