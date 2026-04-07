@@ -14,6 +14,7 @@
   loop:
     - { name: "filebrowser", path: "{{ file_browser_db_path }}" }
     - { name: "heimdall", path: "{{ heimdall_config_path }}" }
+    - { name: "kuma", path: "{{ uptime_kuma_data_path }}" }
     - { name: "semaphore", path: "{{ semaphore_config_path }}" }
     - { name: "jenkins", path: "{{ jenkins_config_path }}" }
 

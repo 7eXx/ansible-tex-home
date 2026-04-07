@@ -13,6 +13,10 @@ heimdall_config_path: "{{ maintenance_station_deploy_path }}/heimdall/config"
 heimdall_http_port: 18080
 heimdall_https_port: 8443
 
+uptime_kuma_data_path: "{{ maintenance_station_deploy_path }}/kuma/data"
+
+uptime_kuma_port: 3001
+
 semaphore_config_path: "{{ maintenance_station_deploy_path }}/semaphore/config"
 semaphore_database_path: "{{ maintenance_station_deploy_path }}/semaphore/database"
 
