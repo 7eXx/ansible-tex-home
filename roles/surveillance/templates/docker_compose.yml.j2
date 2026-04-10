@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  ispyagentdvr:
+    image: mekayelanik/ispyagentdvr:{{ ispy_agentdvr_vers }}
+    restart: unless-stopped
+    environment:
+      - PUID={{ user_id }}
+      - PGID={{ group_id }}
+      - AGENTDVR_WEBUI_PORT=8090 
+      - TZ=Europe/Rome
+    volumes:
+      - {{ ispy_agentdvr_config_path }}:/AgentDVR/Media/XML
+      - {{ ispy_agentdvr_recorings_path }}:/AgentDVR/Media/WebServerRoot/Media
+      - {{ ispy_agentdvr_models_path }}:/AgentDVR/Media/Models
+      - {{ ispy_agentdvr_commands_path }}:/AgentDVR/Commands
+    ports:
+      - {{ ispy_agentdvr_webui_port }}:8090
+      - {{ ispy_agentdvr_udp_port }}:3478/udp
+      - {{ ispy_agentdvr_webrtc_ports }}:50000-50100/udp
+    
