@@ -3,8 +3,6 @@ version: "3.8"
 services:
   ispyagentdvr:
     image: mekayelanik/ispyagentdvr:{{ ispy_agentdvr_vers }}
-    devices:
-      - /dev/dri:/dev/dri
     environment:
       - PUID={{ user_id }}
       - PGID={{ group_id }}
@@ -21,3 +19,7 @@ services:
       - {{ ispy_agentdvr_webrtc_ports }}:50000-50100/udp
     privileged: true
     restart: unless-stopped
+{% if ispy_encoding_enable == true %}
+    devices:
+      - /dev/dri:/dev/dri
+{% endif %}
