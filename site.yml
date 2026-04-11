@@ -12,3 +12,5 @@
       tags: download-station
     - role: maintenance-station
       tags: maintenance-station
+    - role: surveillance
+      tags: surveillance
