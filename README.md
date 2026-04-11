@@ -1,6 +1,14 @@
 # Ansible Tex Home
 This contains a series of playbook ansible to create the homelab infrastructure
 
+## Precheck
+Allow GPU passthrough.  
+To allow Intel GPU passthrough, change permissions to 666 for the following dirs:
+- /dev/dri/card0
+- /dev/dri/renderD128
+
+Then go to Synology > Scheduled Tasks, add script to change permissions at every boot.
+
 # Self signed certificate for Registry
 To work with self signed certificates in docker registry:
 - copy certificate crt on `/var/db/ca-certificates`
