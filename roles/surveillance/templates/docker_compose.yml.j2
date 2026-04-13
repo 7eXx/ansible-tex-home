@@ -19,7 +19,7 @@ services:
       - {{ ispy_agentdvr_webrtc_ports }}:50000-50100/udp
     privileged: true
     restart: unless-stopped
-{% if ispy_encoding_enable == true %}
+{% if ispy_agentdvr_encoding_enable == true %}
     devices:
       - /dev/dri:/dev/dri
 {% endif %}
