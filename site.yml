@@ -12,5 +12,15 @@
       tags: download-station
     - role: maintenance-station
       tags: maintenance-station
+
+- name: Deploy infratructure for t640
+  gather_facts: false
+  become: true
+  hosts:
+    - t640
+  vars_files:
+    - vars/vars.yml
+    - vars/vault_vars.yml
+  roles:
     - role: surveillance
       tags: surveillance

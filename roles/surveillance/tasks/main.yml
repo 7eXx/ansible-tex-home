@@ -1,15 +1,13 @@
 - name: Create deploy folder
   file:
-    path: "{{ surveillance_deploy_path }}"
+    path: "{{ ispy_deploy_path }}"
     state: directory
-    owner: "{{ ansible_user }}"
     mode: '0755'
 
 - name: Create agentdvr dirs
   file:
     state: directory
     path: "{{ item.path }}"
-    owner: "{{ ansible_user }}"
     mode: '0755'
   loop:
     - { name: "ispy_agentdvr_config_path", path: "{{ ispy_agentdvr_config_path }}" }
@@ -20,11 +18,11 @@
 - name: Copy docker compose file
   template:
     src:  docker_compose.yml.j2
-    dest: "{{ surveillance_deploy_path }}/docker-compose.yml"
+    dest: "{{ ispy_deploy_path }}/docker-compose.yml"
     mode: '0755'
 
 - name: Compose deploy
   command: /usr/local/bin/docker-compose up -d
   args:
-    chdir: "{{ surveillance_deploy_path }}/"
+    chdir: "{{ ispy_deploy_path }}/"
 

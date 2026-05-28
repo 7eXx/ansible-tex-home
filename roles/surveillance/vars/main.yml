@@ -1,13 +1,13 @@
-surveillance_deploy_path: /volume1/docker/surveillance
+ispy_deploy_path: /DATA/AppData/ispy-agentdvr
 
 ispy_agentdvr_vers: 7.3.7.0
 
 ispy_agentdvr_encoding_enable: true
 
-ispy_agentdvr_config_path: "{{ surveillance_deploy_path }}/ispy-agentdvr/config"
-ispy_agentdvr_recorings_path: "{{ surveillance_deploy_path }}/ispy-agentdvr/recordings"
-ispy_agentdvr_models_path: "{{ surveillance_deploy_path }}/ispy-agentdvr/models"
-ispy_agentdvr_commands_path: "{{ surveillance_deploy_path }}/ispy-agentdvr/commands"
+ispy_agentdvr_config_path: "{{ ispy_deploy_path }}/config"
+ispy_agentdvr_recorings_path: "{{ ispy_deploy_path }}/recordings"
+ispy_agentdvr_models_path: "{{ ispy_deploy_path }}/models"
+ispy_agentdvr_commands_path: "{{ ispy_deploy_path }}/commands"
 
 ispy_agentdvr_webui_port: 8090
 ispy_agentdvr_udp_port: 3478
