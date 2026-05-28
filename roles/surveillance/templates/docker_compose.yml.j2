@@ -3,8 +3,6 @@ services:
   ispyagentdvr:
     image: mekayelanik/ispyagentdvr:{{ ispy_agentdvr_vers }}
     environment:
-      - PUID={{ user_id }}
-      - PGID={{ group_id }}
       - AGENTDVR_WEBUI_PORT=8090 
       - TZ=Europe/Rome
     volumes:
