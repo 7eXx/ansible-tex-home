@@ -17,6 +17,8 @@ uptime_kuma_data_path: "{{ maintenance_station_deploy_path }}/kuma/data"
 
 uptime_kuma_port: 3001
 
+uptime_kuma_enable: false
+
 semaphore_config_path: "{{ maintenance_station_deploy_path }}/semaphore/config"
 semaphore_database_path: "{{ maintenance_station_deploy_path }}/semaphore/database"
 

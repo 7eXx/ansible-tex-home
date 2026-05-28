@@ -1,6 +1,7 @@
 version: "3.8"
 
 services:
+{% if file_browser_enable | bool %}
   filebrowser:
     image: filebrowser/filebrowser:v2.23.0-s6
     restart: unless-stopped
@@ -13,9 +14,6 @@ services:
       - {{ file_browser_config_path }}:/config
     ports:
       - {{ file_browser_port }}:80
-{% if file_browser_enable == false %}
-    profiles:
-      - donotstart
 {% endif %}
 
   heimdall:
@@ -31,6 +29,7 @@ services:
       - {{ heimdall_http_port }}:80
       - {{ heimdall_https_port }}:844
 
+{% if uptime_kuma_enable | bool %}
   uptime-kuma:
     image: louislam/uptime-kuma:2
     restart: unless-stopped
@@ -41,6 +40,7 @@ services:
       - "{{ uptime_kuma_port }}:3001"
     volumes:
       - {{ uptime_kuma_data_path }}:/app/data
+{% endif %}
 
   semaphore:
     image: semaphoreui/semaphore:latest
