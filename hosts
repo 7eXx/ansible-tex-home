@@ -2,4 +2,4 @@
 192.168.0.100   ansible_user=synology
 
 [t640]
-192.168.0.160   ansible_user=ubuntu
+192.168.0.160   ansible_user=ubuntu     ansible_python_interpreter=/usr/bin/python3

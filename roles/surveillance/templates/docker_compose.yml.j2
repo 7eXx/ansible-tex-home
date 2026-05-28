@@ -15,7 +15,7 @@ services:
     ports:
       - {{ ispy_agentdvr_webui_port }}:8090
       - {{ ispy_agentdvr_udp_port }}:3478/udp
-      - {{ ispy_agentdvr_webrtc_ports }}:50000-50100/udp
+      #- {{ ispy_agentdvr_webrtc_ports }}:50000-50100/udp
     privileged: true
     restart: unless-stopped
 {% if ispy_agentdvr_encoding_enable == true %}

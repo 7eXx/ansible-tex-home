@@ -21,8 +21,10 @@
     dest: "{{ ispy_deploy_path }}/docker-compose.yml"
     mode: '0755'
 
-- name: Compose deploy
-  command: /usr/local/bin/docker-compose up -d
-  args:
-    chdir: "{{ ispy_deploy_path }}/"
+- name: Deploy docker compose
+  community.docker.docker_compose_v2: 
+    project_src: "{{ ispy_deploy_path }}"
+    files:
+      - "docker-compose.yml"
+    state: present
 
