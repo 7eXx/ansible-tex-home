@@ -59,7 +59,7 @@ services:
 
   jenkins:
     image: jenkins/jenkins:lts-jdk17
-    user: "{{ user_id }}:{{ group_id }}"
+    user: "{{ jenkins_uid }}:{{ jenkins_gid }}"
     restart: unless-stopped
     volumes:
       - {{ jenkins_config_path }}:/var/jenkins_home
