@@ -18,6 +18,14 @@
     - { name: "semaphore", path: "{{ semaphore_config_path }}" }
     - { name: "jenkins", path: "{{ jenkins_config_path }}" }
 
+- name: Fix jenkins config dir with default user
+  file:
+    path: "{{ jenkins_config_path }}"
+    state: directory
+    owner: "{{ jenkins_uid }}"
+    group: "{{ jenkins_gid }}"
+    mode: '0755'
+
 - name: Filebrowser tasks
   include_tasks: filebrowser.yml
 
