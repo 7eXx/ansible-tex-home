@@ -59,10 +59,7 @@ services:
 
   jenkins:
     image: jenkins/jenkins:lts-jdk17
-    user: "${UID}:${GID}"
-    environment:
-      - PUID={{ user_id }}
-      - PGID={{ group_id }}
+    user: "{{ user_id }}:{{ group_id }}"
     restart: unless-stopped
     volumes:
       - {{ jenkins_config_path }}:/var/jenkins_home
