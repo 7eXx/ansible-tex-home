@@ -15,7 +15,6 @@
     - { name: "filebrowser", path: "{{ file_browser_db_path }}" }
     - { name: "heimdall", path: "{{ heimdall_config_path }}" }
     - { name: "kuma", path: "{{ uptime_kuma_data_path }}" }
-    - { name: "semaphore", path: "{{ semaphore_config_path }}" }
     - { name: "jenkins", path: "{{ jenkins_config_path }}" }
 
 - name: Fix jenkins config dir with default user
@@ -28,9 +27,6 @@
 
 - name: Filebrowser tasks
   include_tasks: filebrowser.yml
-
-- name: Semaphore tasks
-  include_tasks: semaphore.yml
 
 - name: Copy docker compose file
   template:
