@@ -12,28 +12,3 @@ heimdall_config_path: "{{ maintenance_station_deploy_path }}/heimdall/config"
 
 heimdall_http_port: 18080
 heimdall_https_port: 8443
-
-uptime_kuma_data_path: "{{ maintenance_station_deploy_path }}/kuma/data"
-
-uptime_kuma_port: 3001
-
-uptime_kuma_enable: false
-
-semaphore_config_path: "{{ maintenance_station_deploy_path }}/semaphore/config"
-semaphore_database_path: "{{ maintenance_station_deploy_path }}/semaphore/database"
-
-semaphore_admin_password: "{{ vault_semaphore_admin_password }}"
-
-semaphore_cookie_hash: "{{ vault_semaphore_cookie_hash }}"
-semaphore_encryption: "{{ vault_semaphore_encryption }}"
-semaphore_access_key_encryption: "{{ vault_semaphore_access_key_encryption }}"
-
-semaphore_port: 3000
-
-jenkins_config_path: "{{ maintenance_station_deploy_path }}/jenkins/config"
-
-jenkins_uid: 1000
-jenkins_gid: 1000
-
-jenkins_port: 8080
-jenkins_agent_port: 50000

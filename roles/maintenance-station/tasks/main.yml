@@ -14,16 +14,6 @@
   loop:
     - { name: "filebrowser", path: "{{ file_browser_db_path }}" }
     - { name: "heimdall", path: "{{ heimdall_config_path }}" }
-    - { name: "kuma", path: "{{ uptime_kuma_data_path }}" }
-    - { name: "jenkins", path: "{{ jenkins_config_path }}" }
-
-- name: Fix jenkins config dir with default user
-  file:
-    path: "{{ jenkins_config_path }}"
-    state: directory
-    owner: "{{ jenkins_uid }}"
-    group: "{{ jenkins_gid }}"
-    mode: '0755'
 
 - name: Filebrowser tasks
   include_tasks: filebrowser.yml
